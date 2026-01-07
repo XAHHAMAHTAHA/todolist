@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\FOR CODDIN\\.NET SAVE\\todolist\\todolist\\todolist.csproj",
+      "projectUniqueName": "D:\\FOR CODDIN\\epam\\todolist\\todolist\\todolist.csproj",
       "projectName": "todolist",
-      "projectPath": "D:\\FOR CODDIN\\.NET SAVE\\todolist\\todolist\\todolist.csproj",
+      "projectPath": "D:\\FOR CODDIN\\epam\\todolist\\todolist\\todolist.csproj",
       "packagesPath": "C:\\Users\\first\\.nuget\\packages\\",
-      "outputPath": "D:\\FOR CODDIN\\.NET SAVE\\todolist\\todolist\\obj\\",
+      "outputPath": "D:\\FOR CODDIN\\epam\\todolist\\todolist\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\first\\AppData\\Roaming\\NuGet\\NuGet.Config"

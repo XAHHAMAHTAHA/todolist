@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
+using System.Text.Json;
 
 namespace ToDoList
 {
@@ -8,9 +10,11 @@ namespace ToDoList
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public DateTime DueDate { get; set; } //date
-        public string Priority { get; set; } //high / medium / low
+        public DateTime DueDate { get; set; }
+        public string Priority { get; set; }
         public bool IsCompleted { get; set; }
+
+        public Task() { }
 
         public Task(string id, string name, DateTime dueDate, string priority)
         {
@@ -31,6 +35,12 @@ namespace ToDoList
     public class TaskManager
     {
         private List<Task> tasks = new List<Task>();
+        private const string FileName = "tasks.json";
+
+        public TaskManager()
+        {
+            LoadTasks();
+        }
 
         public void AddTask(string id, string name, DateTime dueDate, string priority)
         {
@@ -41,6 +51,7 @@ namespace ToDoList
             }
 
             tasks.Add(new Task(id, name, dueDate, priority));
+            SaveTasks();
             Console.WriteLine("Task added successfully!");
         }
 
@@ -56,6 +67,7 @@ namespace ToDoList
             task.Name = newName;
             task.DueDate = newDueDate;
             task.Priority = newPriority;
+            SaveTasks();
             Console.WriteLine("Task updated");
         }
 
@@ -69,6 +81,7 @@ namespace ToDoList
             }
 
             tasks.Remove(task);
+            SaveTasks();
             Console.WriteLine("Task deleted!");
         }
 
@@ -82,6 +95,7 @@ namespace ToDoList
             }
 
             task.IsCompleted = true;
+            SaveTasks();
             Console.WriteLine("Task marked as complete!");
         }
 
@@ -90,8 +104,6 @@ namespace ToDoList
             Console.Clear();
             Console.WriteLine("=== ALL TASKS ===");
 
-            
-            
             if (tasks.Count == 0)
             {
                 Console.WriteLine("No tasks found.");
@@ -137,21 +149,38 @@ namespace ToDoList
             else
             {
                 var sorted = tasks.OrderBy(t =>
-                {
-                    return t.Priority switch
+                    t.Priority switch
                     {
-                        "high" => 1,    // 3
-                        "medium" => 2,  // 2
-                        "low" => 3,     // 1
+                        "high" => 1,
+                        "medium" => 2,
+                        "low" => 3,
                         _ => 4
-                    };
-                });
+                    });
 
                 foreach (var task in sorted)
                     task.Display();
             }
 
             Pause();
+        }
+
+        private void SaveTasks()
+        {
+            var json = JsonSerializer.Serialize(tasks, new JsonSerializerOptions
+            {
+                WriteIndented = true
+            });
+
+            File.WriteAllText(FileName, json);
+        }
+
+        private void LoadTasks()
+        {
+            if (!File.Exists(FileName))
+                return;
+
+            var json = File.ReadAllText(FileName);
+            tasks = JsonSerializer.Deserialize<List<Task>>(json) ?? new List<Task>();
         }
 
         private void Pause()
@@ -182,9 +211,9 @@ namespace ToDoList
                 Console.WriteLine("4. Mark Complete");
                 Console.WriteLine("5. View All Tasks");
                 Console.WriteLine("6. View by Date");
-                Console.WriteLine("7. View by Priority ");
+                Console.WriteLine("7. View by Priority");
                 Console.WriteLine("8. Exit");
-                Console.Write("Choose:   ");
+                Console.Write("Choose: ");
 
                 switch (Console.ReadLine())
                 {
@@ -213,7 +242,7 @@ namespace ToDoList
             Console.Write("Name: ");
             string name = Console.ReadLine();
 
-            Console.Write("Due date (dd.mm.yyyy): ");
+            Console.Write("Due date (dd.MM.yyyy): ");
             if (!DateTime.TryParseExact(Console.ReadLine(), "dd.MM.yyyy", null,
                 System.Globalization.DateTimeStyles.None, out DateTime date))
             {
@@ -235,7 +264,6 @@ namespace ToDoList
             Console.Write("Task ID: ");
             string id = Console.ReadLine();
 
-            
             if (!manager.TaskExists(id))
             {
                 Console.WriteLine("Task not found!");
@@ -246,15 +274,15 @@ namespace ToDoList
             Console.Write("New name: ");
             string name = Console.ReadLine();
 
-            
-            Console.Write("New due date (dd.mm.yyyy): ");
-            if (!DateTime.TryParseExact(Console.ReadLine(), "dd.mm.yyyy", null,
+            Console.Write("New due date (dd.MM.yyyy): ");
+            if (!DateTime.TryParseExact(Console.ReadLine(), "dd.MM.yyyy", null,
                 System.Globalization.DateTimeStyles.None, out DateTime date))
             {
                 Console.WriteLine("Invalid date!");
                 Console.ReadKey();
                 return;
             }
+
             Console.Write("New priority (high/medium/low): ");
             string priority = Console.ReadLine().ToLower();
 
@@ -270,8 +298,6 @@ namespace ToDoList
             Console.ReadKey();
         }
 
-        
-        
         static void MarkComplete(TaskManager manager)
         {
             Console.Clear();

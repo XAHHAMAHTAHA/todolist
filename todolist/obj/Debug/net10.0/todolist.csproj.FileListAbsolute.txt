@@ -27,3 +27,18 @@ D:\FOR CODDIN\.NET SAVE\todolist\todolist\obj\Debug\net10.0\refint\todolist.dll
 D:\FOR CODDIN\.NET SAVE\todolist\todolist\obj\Debug\net10.0\todolist.pdb
 D:\FOR CODDIN\.NET SAVE\todolist\todolist\obj\Debug\net10.0\todolist.genruntimeconfig.cache
 D:\FOR CODDIN\.NET SAVE\todolist\todolist\obj\Debug\net10.0\ref\todolist.dll
+D:\FOR CODDIN\epam\todolist\todolist\bin\Debug\net10.0\todolist.exe
+D:\FOR CODDIN\epam\todolist\todolist\bin\Debug\net10.0\todolist.deps.json
+D:\FOR CODDIN\epam\todolist\todolist\bin\Debug\net10.0\todolist.runtimeconfig.json
+D:\FOR CODDIN\epam\todolist\todolist\bin\Debug\net10.0\todolist.dll
+D:\FOR CODDIN\epam\todolist\todolist\bin\Debug\net10.0\todolist.pdb
+D:\FOR CODDIN\epam\todolist\todolist\obj\Debug\net10.0\todolist.GeneratedMSBuildEditorConfig.editorconfig
+D:\FOR CODDIN\epam\todolist\todolist\obj\Debug\net10.0\todolist.AssemblyInfoInputs.cache
+D:\FOR CODDIN\epam\todolist\todolist\obj\Debug\net10.0\todolist.AssemblyInfo.cs
+D:\FOR CODDIN\epam\todolist\todolist\obj\Debug\net10.0\todolist.csproj.CoreCompileInputs.cache
+D:\FOR CODDIN\epam\todolist\todolist\obj\Debug\net10.0\todolist.sourcelink.json
+D:\FOR CODDIN\epam\todolist\todolist\obj\Debug\net10.0\todolist.dll
+D:\FOR CODDIN\epam\todolist\todolist\obj\Debug\net10.0\refint\todolist.dll
+D:\FOR CODDIN\epam\todolist\todolist\obj\Debug\net10.0\todolist.pdb
+D:\FOR CODDIN\epam\todolist\todolist\obj\Debug\net10.0\todolist.genruntimeconfig.cache
+D:\FOR CODDIN\epam\todolist\todolist\obj\Debug\net10.0\ref\todolist.dll
